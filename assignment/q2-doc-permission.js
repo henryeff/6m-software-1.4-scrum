@@ -81,7 +81,10 @@ class Document extends Permission {
     this.#content = content;
   }
   process() {
-    return this.check();
+    let result = this.check();
+    if (this.check()) {
+      console.log("Allowed");
+    } else console.log("blocked");
   }
 }
 
@@ -92,7 +95,6 @@ const d = new Document(
   "Hello content"
 );
 d.process(); // "Allowed"
-console.log(d.process());
 
 //Scenario 2:
 const x = new Document(
@@ -101,7 +103,6 @@ const x = new Document(
   "Hello content"
 );
 x.process(); // "Blocked"
-console.log(x.process());
 
 //Scenario 3:
 const y = new Document(
@@ -110,4 +111,3 @@ const y = new Document(
   "Hello content"
 );
 y.process(); // "Allowed"
-console.log(y.process());
